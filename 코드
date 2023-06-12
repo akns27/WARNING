@@ -1,0 +1,42 @@
+int laser = 10;
+int cds = A0;
+int boo = 4;
+
+void setup()
+{
+  pinMode(boo, OUTPUT);
+  digitalWrite(laser, HIGH);
+  pinMode(laser, OUTPUT);
+}
+
+void loop()
+{
+  int cdsValue = analogRead(0);
+  Serial.println(cdsValue);
+  if (cdsValue > 220) {    
+    digitalWrite(boo, HIGH);        
+  } else {    
+    digitalWrite(boo, LOW);      
+  }
+}
+__________________
+int laserPin = 10;
+int cdsPin = A0;
+int booPin = 4;
+
+void setup()
+{
+  pinMode(booPin, OUTPUT);
+  pinMode(laserPin, OUTPUT);
+}
+
+void loop()
+{
+  int cdsValue = analogRead(cdsPin);
+  Serial.println(cdsValue);
+  if (cdsValue > 220) {    
+    digitalWrite(booPin, HIGH);        
+  } else {    
+    digitalWrite(booPin, LOW);      
+  }
+}
