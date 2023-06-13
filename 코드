@@ -1,42 +1,31 @@
+#include <SoftwareSerial.h>
+
 int laser = 10;
 int cds = A0;
 int boo = 4;
+int cdsValue;
+int PIR_val = 0;
+int PIR = 7;
 
 void setup()
 {
   pinMode(boo, OUTPUT);
   digitalWrite(laser, HIGH);
   pinMode(laser, OUTPUT);
+  pinMode(PIR, INPUT);
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  int cdsValue = analogRead(0);
-  Serial.println(cdsValue);
+  PIR_val = digitalRead(PIR);
+  cdsValue = analogRead(0);
   if (cdsValue > 220) {    
-    digitalWrite(boo, HIGH);        
-  } else {    
-    digitalWrite(boo, LOW);      
+    tone(4,1000,1000);
   }
-}
-__________________
-int laserPin = 10;
-int cdsPin = A0;
-int booPin = 4;
 
-void setup()
-{
-  pinMode(booPin, OUTPUT);
-  pinMode(laserPin, OUTPUT);
-}
-
-void loop()
-{
-  int cdsValue = analogRead(cdsPin);
-  Serial.println(cdsValue);
-  if (cdsValue > 220) {    
-    digitalWrite(booPin, HIGH);        
-  } else {    
-    digitalWrite(booPin, LOW);      
+  if (PIR_val == 1)
+  {
+    tone(4,1000,1000);
   }
 }
